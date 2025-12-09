@@ -61,11 +61,17 @@ jobs:
             cargo build --release --target ${{ matrix.target }}
           fi
 
+      - name: Rename binary
+        shell: bash
+        run: |
+          mkdir -p dist
+          VERSION=${GITHUB_REF#refs/tags/}
+          cp target/${{ matrix.target }}/release/midifix${{ matrix.ext }} dist/midifix-${VERSION}-${{ matrix.target }}${{ matrix.ext }}
+
       - name: Upload to release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            target/${{ matrix.target }}/release/midifix${{ matrix.ext }}
+            dist/midifix-*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
