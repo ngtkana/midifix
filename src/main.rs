@@ -2,7 +2,7 @@ use eframe::egui;
 use std::path::PathBuf;
 
 fn main() -> Result<(), eframe::Error> {
-    let args: Vec<String> = std::env::args().collect();
+    let args: Vec<_> = std::env::args_os().collect();
     let initial_file = if args.len() > 1 {
         Some(PathBuf::from(&args[1]))
     } else {
