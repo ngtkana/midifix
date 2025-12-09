@@ -74,10 +74,17 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
           cp target/${{ matrix.target }}/release/midifix${{ matrix.ext }} dist/midifix-${VERSION}-${{ matrix.target }}${{ matrix.ext }}
 
+      - name: Copy installer script (Windows only)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          cp installer.ps1 dist/
+
       - name: Upload to release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             dist/midifix-*
+            dist/installer.ps1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

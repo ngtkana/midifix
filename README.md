@@ -4,18 +4,11 @@ Fixes MIDI track name encoding (Shift-JIS/EUC-JP to UTF-8).
 
 ## Installation (Windows)
 
-1. Download `midifix-v1.1.0-x86_64-pc-windows-msvc.exe` from [Releases](https://github.com/ngtkana/midifix/releases)
-2. Rename it to `midifix.exe`
-3. Create a folder (e.g., `C:\Program Files\midifix`) and place `midifix.exe` there
-4. Download `install.ps1` from this repository
-5. Place `install.ps1` in the same folder
-6. Right-click PowerShell and select "Run as administrator"
-7. Navigate to the folder and run:
-```powershell
-.\install.ps1
-```
+1. Download `installer.ps1` from [Releases](https://github.com/ngtkana/midifix/releases)
+2. Right-click `installer.ps1` and select "Run with PowerShell"
+3. If prompted, allow administrator privileges
 
-This adds "Fix with MIDI Fix" to the right-click menu for .mid/.midi files.
+The installer will automatically download and install MIDI Fix to `%LOCALAPPDATA%\midifix`.
 
 ## Usage
 
@@ -23,8 +16,9 @@ Right-click a MIDI file and select "Fix with MIDI Fix". Output is saved as `file
 
 ## Uninstall
 
+Right-click `installer.ps1` and select "Run with PowerShell", then run:
 ```powershell
-.\install.ps1 -Uninstall
+.\installer.ps1 -Uninstall
 ```
 
 ## Build from Source
