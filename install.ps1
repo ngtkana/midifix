@@ -14,15 +14,18 @@ if (-not $isAdmin) {
     exit 1
 }
 
-$exePath = Join-Path $PSScriptRoot "target\release\midifix.exe"
+$exePath = Join-Path $PSScriptRoot "midifix.exe"
 
 if (-not $Uninstall) {
     Write-Host "Installing MIDI Fix..." -ForegroundColor Cyan
 
     if (-not (Test-Path $exePath)) {
-        Write-Host "Error: $exePath not found." -ForegroundColor Red
-        Write-Host "Run 'cargo build --release' first." -ForegroundColor Yellow
-        exit 1
+        $exePath = Join-Path $PSScriptRoot "target\release\midifix.exe"
+        if (-not (Test-Path $exePath)) {
+            Write-Host "Error: midifix.exe not found." -ForegroundColor Red
+            Write-Host "Place midifix.exe in the same folder as this script, or run 'cargo build --release'." -ForegroundColor Yellow
+            exit 1
+        }
     }
 
     $regPath = "HKEY_CLASSES_ROOT\SystemFileAssociations\.mid\shell\MidiFix"
