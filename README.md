@@ -12,12 +12,17 @@ The installer will automatically download and install MIDI Fix to `%LOCALAPPDATA
 
 ### Troubleshooting
 
-If you get an execution policy error, run this in PowerShell as administrator:
+If you get an execution policy error, unblock the file first:
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Unblock-File .\installer.ps1
 ```
 
-Or run the installer with bypass:
+Then run the installer:
+```powershell
+.\installer.ps1
+```
+
+Alternatively, run with bypass (no unblock needed):
 ```powershell
 PowerShell -ExecutionPolicy Bypass -File .\installer.ps1
 ```
