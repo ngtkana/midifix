@@ -48,7 +48,7 @@ $regPath = "HKEY_CLASSES_ROOT\SystemFileAssociations\.mid\shell\MidiFix"
 $regCommandPath = "HKEY_CLASSES_ROOT\SystemFileAssociations\.mid\shell\MidiFix\command"
 
 reg add $regPath /ve /d "Fix with MIDI Fix" /f | Out-Null
-reg add $regPath /v "Icon" /d "`"$INSTALLED_EXE`"" /f | Out-Null
+reg add $regPath /v "Icon" /d "%SystemRoot%\System32\shell32.dll,42" /f | Out-Null
 
 if (Test-Path $INSTALLED_WRAPPER) {
     reg add $regCommandPath /ve /d "\`"$INSTALLED_WRAPPER\`" \`"%1\`"" /f | Out-Null
@@ -60,7 +60,7 @@ $regPathMidi = "HKEY_CLASSES_ROOT\SystemFileAssociations\.midi\shell\MidiFix"
 $regCommandPathMidi = "HKEY_CLASSES_ROOT\SystemFileAssociations\.midi\shell\MidiFix\command"
 
 reg add $regPathMidi /ve /d "Fix with MIDI Fix" /f | Out-Null
-reg add $regPathMidi /v "Icon" /d "`"$INSTALLED_EXE`"" /f | Out-Null
+reg add $regPathMidi /v "Icon" /d "%SystemRoot%\System32\shell32.dll,42" /f | Out-Null
 
 if (Test-Path $INSTALLED_WRAPPER) {
     reg add $regCommandPathMidi /ve /d "\`"$INSTALLED_WRAPPER\`" \`"%1\`"" /f | Out-Null
