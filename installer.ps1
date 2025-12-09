@@ -7,7 +7,15 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$VERSION = "v1.1.0"
+# Fetch latest version from GitHub API
+try {
+    $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/ngtkana/midifix/releases/latest" -UseBasicParsing
+    $VERSION = $latestRelease.tag_name
+} catch {
+    Write-Host "Warning: Could not fetch latest version, using default v1.1.0" -ForegroundColor Yellow
+    $VERSION = "v1.1.0"
+}
+
 $INSTALL_DIR = "$env:LOCALAPPDATA\midifix"
 $EXE_PATH = "$INSTALL_DIR\midifix.exe"
 $DOWNLOAD_URL = "https://github.com/ngtkana/midifix/releases/download/$VERSION/midifix-$VERSION-x86_64-pc-windows-msvc.exe"
