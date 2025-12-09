@@ -10,6 +10,18 @@ Fixes MIDI track name encoding (Shift-JIS/EUC-JP to UTF-8).
 
 The installer will automatically download and install MIDI Fix to `%LOCALAPPDATA%\midifix`.
 
+### Troubleshooting
+
+If you get an execution policy error, run this in PowerShell as administrator:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Or run the installer with bypass:
+```powershell
+PowerShell -ExecutionPolicy Bypass -File .\installer.ps1
+```
+
 ## Usage
 
 Right-click a MIDI file and select "Fix with MIDI Fix". Output is saved as `filename_fixed.mid`.
