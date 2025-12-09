@@ -29,11 +29,10 @@ PowerShell -ExecutionPolicy Bypass -File .\installer.ps1
 
 ## Usage
 
-Right-click a MIDI file and select "Fix with MIDI Fix". Output is saved as `filename_fixed.mid`.
+Right-click a MIDI file and select "Fix with MIDI Fix". The tool processes the file silently and saves output as `filename_fixed.mid` in the same directory.
 
 ## Uninstall
 
-Right-click `installer.ps1` and select "Run with PowerShell", then run:
 ```powershell
 .\installer.ps1 -Uninstall
 ```
